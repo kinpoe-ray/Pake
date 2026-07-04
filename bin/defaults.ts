@@ -43,6 +43,7 @@ export const DEFAULT_PAKE_OPTIONS: PakeCliOptions = {
   keepBinary: false,
   multiInstance: false,
   multiWindow: false,
+  backForwardNavigationGestures: process.platform === 'darwin',
   startToTray: false,
   forceInternalNavigation: false,
   internalUrlRegex: '',

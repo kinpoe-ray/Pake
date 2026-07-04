@@ -277,6 +277,14 @@ A simpler way to keep trusted domains and their subdomains inside the app. This 
 --safe-domain slack.com,okta.com
 ```
 
+#### [no-back-forward-navigation-gestures]
+
+Disable macOS trackpad swipe navigation. By default, macOS apps allow horizontal swipe gestures to navigate backward and forward in the WebView history.
+
+```shell
+--no-back-forward-navigation-gestures
+```
+
 #### [multi-arch]
 
 Package the application to support both Intel and M1 chips, exclusively for macOS. Default is `false`.

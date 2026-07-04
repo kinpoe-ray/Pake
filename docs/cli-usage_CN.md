@@ -275,6 +275,14 @@ pake https://github.com --name GitHub
 --safe-domain slack.com,okta.com
 ```
 
+#### [no-back-forward-navigation-gestures]
+
+禁用 macOS 触控板横向滑动导航。默认情况下，macOS 应用允许通过横向滑动手势在 WebView 历史记录中后退和前进。
+
+```shell
+--no-back-forward-navigation-gestures
+```
+
 #### [multi-arch]
 
 设置打包结果同时支持 Intel 和 M1 芯片，仅适用于 macOS，默认为 `false`。

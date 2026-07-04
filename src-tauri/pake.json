@@ -18,6 +18,7 @@
       "enable_drag_drop": false,
       "maximize": false,
       "start_to_tray": false,
+      "back_forward_navigation_gestures": true,
       "force_internal_navigation": false,
       "internal_url_regex": "",
       "enable_find": false,

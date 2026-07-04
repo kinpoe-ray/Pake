@@ -497,7 +497,18 @@ fn build_window(
 
     window_builder = window_builder.on_navigation(|_| true);
 
-    window_builder.build()
+    let window = window_builder.build()?;
+
+    #[cfg(target_os = "macos")]
+    window.with_webview({
+        let enabled = window_config.back_forward_navigation_gestures;
+        move |webview| unsafe {
+            let view: &objc2_web_kit::WKWebView = &*webview.inner().cast();
+            view.setAllowsBackForwardNavigationGestures(enabled);
+        }
+    })?;
+
+    Ok(window)
 }
 
 #[cfg(all(test, target_os = "windows"))]
