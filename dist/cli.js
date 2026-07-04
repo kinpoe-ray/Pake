@@ -551,6 +551,7 @@ function buildWindowConfigOverrides(options, platform = asSupportedPlatform(proc
         title: options.title,
         enable_wasm: options.wasm,
         enable_drag_drop: options.enableDragDrop,
+        back_forward_navigation_gestures: platform === 'darwin' && options.backForwardNavigationGestures,
         start_to_tray: options.startToTray && options.showSystemTray,
         force_internal_navigation: options.forceInternalNavigation,
         internal_url_regex: options.internalUrlRegex,
@@ -2762,6 +2763,7 @@ const DEFAULT_PAKE_OPTIONS = {
     keepBinary: false,
     multiInstance: false,
     multiWindow: false,
+    backForwardNavigationGestures: process.platform === 'darwin',
     startToTray: false,
     forceInternalNavigation: false,
     internalUrlRegex: '',
@@ -2944,6 +2946,9 @@ ${green('|_|   \\__,_|_|\\_\\___|  can turn any webpage into a desktop app with 
         .default(DEFAULT_PAKE_OPTIONS.iterativeBuild)
         .hideHelp())
         .addOption(new Option('--new-window', 'Allow sites to open new windows (for auth flows, tabs, branches)').default(DEFAULT_PAKE_OPTIONS.newWindow))
+        .addOption(new Option('--no-back-forward-navigation-gestures', 'Disable macOS trackpad swipe navigation')
+        .default(DEFAULT_PAKE_OPTIONS.backForwardNavigationGestures)
+        .hideHelp())
         .addOption(new Option('--install', 'Auto-install app to /Applications (macOS) after build and remove local bundle')
         .default(DEFAULT_PAKE_OPTIONS.install)
         .hideHelp())

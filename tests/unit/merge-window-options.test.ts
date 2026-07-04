@@ -94,6 +94,27 @@ describe('buildWindowConfigOverrides', () => {
     ).toBe(true);
   });
 
+  it('only enables back/forward navigation gestures on macOS', () => {
+    expect(
+      buildWindowConfigOverrides(
+        makeOptions({ backForwardNavigationGestures: true }),
+        'darwin',
+      ).back_forward_navigation_gestures,
+    ).toBe(true);
+    expect(
+      buildWindowConfigOverrides(
+        makeOptions({ backForwardNavigationGestures: true }),
+        'linux',
+      ).back_forward_navigation_gestures,
+    ).toBe(false);
+    expect(
+      buildWindowConfigOverrides(
+        makeOptions({ backForwardNavigationGestures: false }),
+        'darwin',
+      ).back_forward_navigation_gestures,
+    ).toBe(false);
+  });
+
   it('forwards window/zoom/wasm/new_window flags verbatim', () => {
     const result = buildWindowConfigOverrides(
       makeOptions({
@@ -106,6 +127,7 @@ describe('buildWindowConfigOverrides', () => {
         enableDragDrop: true,
         ignoreCertificateErrors: true,
         newWindow: true,
+        backForwardNavigationGestures: true,
         enableFind: true,
         forceInternalNavigation: true,
         internalUrlRegex: '^https://example\\.com',
@@ -122,6 +144,7 @@ describe('buildWindowConfigOverrides', () => {
       enable_drag_drop: true,
       ignore_certificate_errors: true,
       new_window: true,
+      back_forward_navigation_gestures: true,
       enable_find: true,
       force_internal_navigation: true,
       internal_url_regex: '^https://example\\.com',

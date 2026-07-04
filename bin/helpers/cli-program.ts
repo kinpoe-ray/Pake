@@ -270,6 +270,14 @@ ${green('|_|   \\__,_|_|\\_\\___|  can turn any webpage into a desktop app with 
     )
     .addOption(
       new Option(
+        '--no-back-forward-navigation-gestures',
+        'Disable macOS trackpad swipe navigation',
+      )
+        .default(DEFAULT.backForwardNavigationGestures)
+        .hideHelp(),
+    )
+    .addOption(
+      new Option(
         '--install',
         'Auto-install app to /Applications (macOS) after build and remove local bundle',
       )

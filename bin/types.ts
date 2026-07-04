@@ -103,6 +103,9 @@ export interface PakeCliOptions {
   // Allow opening multiple windows in one app instance, default false
   multiWindow: boolean;
 
+  // Enable macOS trackpad swipe navigation, default true on macOS
+  backForwardNavigationGestures: boolean;
+
   // Start app minimized to tray, default false
   startToTray: boolean;
 
@@ -175,6 +178,7 @@ export interface WindowConfig {
   enable_wasm: boolean;
   enable_drag_drop: boolean;
   start_to_tray: boolean;
+  back_forward_navigation_gestures: boolean;
   force_internal_navigation: boolean;
   internal_url_regex: string;
   enable_find: boolean;

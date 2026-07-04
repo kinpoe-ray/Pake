@@ -22,6 +22,8 @@ pub struct WindowConfig {
     #[serde(default)]
     pub new_window: bool,
     pub start_to_tray: bool,
+    #[serde(default = "default_back_forward_navigation_gestures")]
+    pub back_forward_navigation_gestures: bool,
     #[serde(default)]
     pub force_internal_navigation: bool,
     #[serde(default)]
@@ -40,6 +42,10 @@ pub struct WindowConfig {
 
 fn default_zoom() -> u32 {
     100
+}
+
+fn default_back_forward_navigation_gestures() -> bool {
+    cfg!(target_os = "macos")
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
